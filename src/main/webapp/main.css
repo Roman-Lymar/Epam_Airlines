@@ -1,0 +1,177 @@
+
+body {
+	background: url('plane.jpg') no-repeat center center fixed;
+	background-size: cover;
+	
+}
+
+table {
+    border-collapse: collapse;
+    border: 3px solid #0000ff;
+    text-align: center;
+}
+
+th {
+    padding: 5px;
+    border: 3px solid #8080ff;
+}
+
+td {
+    padding: 5px;
+    border: 3px solid #8080ff;
+}
+
+form button {
+    height: 28px;
+    line-height: 28px;
+    margin: 28px 5px 0 0;
+    padding: 0 5px 0 28px;
+}
+
+form button.save {
+    background: url('save.png') no-repeat;
+}
+
+form button.search {
+    background: url('search.png') no-repeat;
+    background-color: maroon;
+}
+
+form button.add {
+    background: url('add.png') no-repeat;
+}
+
+form button.delete {
+    background: url('delete.png') no-repeat;
+}
+
+form button.edit {
+    background: url('edit.png') no-repeat;
+}
+
+form button.cancel {
+    background: url('edit.png') no-repeat;
+}
+
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: initial;
+}
+
+form button.show {
+    background: url('show.png') no-repeat;
+}
+
+form button.login {
+    width: 400px;
+    padding: 0 32px 0 32px;
+}
+
+a.edit {
+    display: inline-block;
+    width: 27px;
+    height: 27px;
+    background: url('edit.png') no-repeat;
+}
+
+a.delete {
+    display: inline-block;
+    width: 27px;
+    height: 27px;
+    background: url('delete.png') no-repeat;
+}
+
+a.add {
+    display: inline-block;
+    width: 27px;
+    height: 27px;
+    background: url('add.png') no-repeat;
+}
+
+a.show {
+    display: inline-block;
+    width: 27px;
+    height: 27px;
+    background: url('show.png') no-repeat;
+}
+
+a.cancel {
+    display: inline-block;
+    width: 27px;
+    height: 27px;
+    background: url('cancel.png') no-repeat;
+}
+
+a.send_message {
+    display: inline-block;
+    width: 27px;
+    height: 27px;
+    padding: 0 32px 0 32px;
+    background: url('send_message.png') no-repeat;
+}
+
+a.defPassword {
+    display: inline-block;
+    width: 27px;
+    height: 27px;
+    background: url('password.png') no-repeat;
+}
+
+p.error {
+    color: red;
+    font-size: 25px;
+    text-align: center;
+    border: 3px solid red;
+}
+
+#menu {
+    width: 100%;
+    background-color: rgba(128,0,0,0.5);
+    color: white;
+    font-size: 18px;
+}
+
+#menu li {
+    display: inline-block;
+    color: black;
+}
+
+#menu a:link, #menu a:visited {
+    color: #000000;
+    text-decoration: none;
+    display: block;
+    padding: 0 18px;
+    line-height: 45px;
+    text-align: center;
+    font-size: 18px;
+}
+
+#menu a:hover {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: maroon;
+}
+
+#menu ul {
+    margin-left: 18px;
+    padding: 0;
+}
+
+.pagin {
+    margin-left: 100px;
+    margin-bottom: 5px;
+    color: black;
+}
+
+#text {
+    text-align: center;
+    border: 1px solid black;
+}
+
+
+
+
