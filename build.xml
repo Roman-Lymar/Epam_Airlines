@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="avia" default = "build.war">
+
+    <property environment="env"/>
+
+    <property file="build.properties"/>
+
+    <property name="dir.dst" value=".dst"/>
+
+    <property name="dir.classes" value="${dir.dst}/classes"/>
+
+    <property name="dir.src" value="src/main/java"/>
+
+    <property name="dir.lib" value="src/main/webapp/WEB-INF/lib"/>
+
+    <property name="dir.war.content" value="${dir.dst}/war.content"/>
+
+    <property name="dir.webapp" value="src/main/webapp"/>
+
+    <property name="dir.resources" value="src/main/resources"/>
+
+    <property name="name.apl" value="avia"/>
+
+    <property name="file.jar" value="${dir.dst}/${name.apl}.jar"/>
+
+    <property name="file.war" value="${dir.dst}/${name.apl}.war"/>
+
+    <path id="libs.main.module">
+        <path location="${dir.lib}/javax.servlet-api-3.1.0.jar"/>
+        <path location="${dir.lib}/javax.servlet.jsp-api-2.3.1.jar"/>
+        <path location="${dir.lib}/jstl-1.2.jar"/>
+        <path location="${dir.lib}/log4j-1.2.17.jar"/>
+        <path location="${dir.lib}/mysql-connector-java-5.1.26.jar"/>
+        <path location="${dir.lib}/commons-codec-1.4.jar"/>
+        <path location="${dir.lib}/tomcat-embed-core-9.0.6.jar"/>
+        <path location="${dir.lib}/tomcat-annotations-api-9.0.6.jar"/>
+    </path>
+
+    <target name="mkdir">
+        <mkdir dir="${dir.dst}"/>
+        <mkdir dir="${dir.classes}"/>
+    </target>
+
+    <target name="compile" depends="mkdir">
+        <javac srcdir="${dir.src}" destdir="${dir.classes}">
+            <classpath>
+                <path refid="libs.main.module"/>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="build.jar" depends="compile">
+        <jar destfile="${file.jar}"
+             basedir="${dir.classes}"
+             compress="false"
+             index="true"/>
+    </target>
+
+    <target name="build.war.content" depends="build.jar">
+        <copy todir="${dir.war.content}" preservelastmodified="true" overwrite="true">
+            <fileset dir="${dir.webapp}"/>
+        </copy>
+
+        <copy todir="${dir.war.content}/WEB-INF/classes" preservelastmodified="true" overwrite="true">
+            <fileset dir="${dir.classes}"/>
+        </copy>
+
+        <copy todir="${dir.war.content}/WEB-INF/lib" preservelastmodified="true">
+            <path refid="libs.main.module"/>
+        </copy>
+
+        <copy todir="${dir.war.content}/WEB-INF/lib" preservelastmodified="true" file="${file.jar}">
+        </copy>
+
+        <copy todir="${dir.war.content}/WEB-INF/classes" preservelastmodified="true">
+            <fileset dir="${dir.resources}" includes="*.properties"/>
+        </copy>
+    </target>
+
+    <target name="build.war" depends="build.war.content">
+        <delete file="${file.war}"/>
+        <war
+            compress="true"
+            encoding="UTF-8"
+            warfile="${file.war}"
+            webxml="${dir.war.content}/WEB-INF/web.xml">
+            <fileset dir="${dir.war.content}" excludes="WEB-INF/web.xml"/>
+        </war>
+    </target>
+
+    <target name="clean">
+        <delete dir="${dir.dst}"/>
+    </target>
+
+</project>
